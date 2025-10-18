@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DietGenie | 1-Day Personalized Meal Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .slide-in {
+      animation: slideIn 0.6s ease-out;
+    }
+
+    .slide-in-delay-1 {
+      animation: slideIn 0.6s ease-out 0.2s both;
+    }
+
+    .slide-in-delay-2 {
+      animation: slideIn 0.6s ease-out 0.4s both;
+    }
+
+    .slide-in-delay-3 {
+      animation: slideIn 0.6s ease-out 0.6s both;
+    }
+
+    .loading-spinner {
+      animation: spin 1.5s linear infinite;
+    }
+
+    .floating-label {
+      transition: all 0.3s ease;
+    }
+
+    input:focus + .floating-label,
+    input:not(:placeholder-shown) + .floating-label,
+    select:focus + .floating-label,
+    select:not([value=""]) + .floating-label {
+      transform: translateY(-1.5rem);
+      font-size: 0.75rem;
+      color: #26A69A;
+    }
+
+    .btn-bounce:hover {
+      animation: bounce 0.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body class="bg-[#F9F9F9] text-[#333333] min-h-screen flex flex-col">
+
+  {% include 'navbar.html' %}
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-[#4CAF50] to-[#26A69A] text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center fade-in-up">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Generate Your Personalized 1-Day Healthy Meal Plan 🍽️
+      </h1>
+      <p class="text-lg md:text-xl text-white/90">
+        Enter your details and let AI craft a balanced South Indian meal plan just for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="flex-1 flex flex-col items-center py-12 px-4">
+    
+    <!-- Input Form -->
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl slide-in border-t-4 border-[#26A69A]">
+      <h2 class="text-2xl font-bold mb-6 text-center text-[#26A69A] flex items-center justify-center gap-2">
+        <i class="fas fa-user-circle"></i>
+        Enter Your Details
+      </h2>
+
+      <form id="form1day" class="space-y-6">
+        
+        <!-- Age Input -->
+        <div class="relative">
+          <div class="flex items-center gap-3 border-2 border-gray-200 rounded-lg px-4 py-3 focus-within:border-[#26A69A] transition">
+            <i class="fas fa-birthday-cake text-[#26A69A] text-xl"></i>
+            <input 
+              type="number" 
+              name="age" 
+              placeholder="Enter your age" 
+              required 
+              min="1" 
+              max="120"
+              class="w-full outline-none text-[#333333] placeholder-gray-400"
+            >
+          </div>
+        </div>
+
+        <!-- Gender Input -->
+        <div class="relative">
+          <div class="flex items-center gap-3 border-2 border-gray-200 rounded-lg px-4 py-3 focus-within:border-[#26A69A] transition">
+            <i class="fas fa-venus-mars text-[#26A69A] text-xl"></i>
+            <select 
+              name="gender" 
+              required 
+              class="w-full outline-none text-[#333333] bg-transparent"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Health Conditions Input -->
+        <div class="relative">
+          <div class="flex items-start gap-3 border-2 border-gray-200 rounded-lg px-4 py-3 focus-within:border-[#26A69A] transition">
+            <i class="fas fa-heartbeat text-[#26A69A] text-xl mt-1"></i>
+            <textarea 
+              name="health_conditions" 
+              placeholder="Health conditions (e.g., diabetes, hypertension)" 
+              required 
+              rows="3"
+              class="w-full outline-none text-[#333333] placeholder-gray-400 resize-none"
+            ></textarea>
+          </div>
+          <p class="text-xs text-gray-500 mt-2 ml-1">Separate multiple conditions with commas</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          id="generateBtn" 
+          type="submit" 
+          class="w-full bg-[#FFA726] hover:bg-[#fb8c00] text-white font-bold py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl btn-bounce flex items-center justify-center gap-2 text-lg"
+        >
+          <i class="fas fa-utensils"></i>
+          Generate 1-Day Plan
+        </button>
+      </form>
+    </div>
+
+    <!-- Loading Animation -->
+    <div id="loadingSection" class="hidden mt-12 text-center">
+      <div class="loading-spinner inline-block text-6xl mb-4">
+        🍽️
+      </div>
+      <p class="text-xl font-semibold text-[#26A69A] pulse" style="animation: pulse 1.5s infinite;">
+        Cooking up your perfect plan...
+      </p>
+      <p class="text-sm text-gray-500 mt-2">This may take a few seconds</p>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result1day" class="hidden mt-12 w-full max-w-5xl">
+      
+      <!-- Success Header -->
+      <div class="text-center mb-8 fade-in-up">
+        <div class="inline-block bg-[#4CAF50] text-white px-6 py-3 rounded-full shadow-lg mb-4">
+          <i class="fas fa-check-circle mr-2"></i>
+          Plan Generated Successfully!
+        </div>
+        <h3 class="text-3xl font-bold text-[#4CAF50] mb-2">
+          Your Personalized 1-Day Meal Plan
+        </h3>
+        <p class="text-gray-600">Tailored just for you based on your health profile</p>
+      </div>
+
+      <!-- Meals Grid -->
+      <div id="meals" class="grid md:grid-cols-3 gap-6 mb-8"></div>
+
+      <!-- Nutrition Chart & Summary -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        
+        <!-- Chart Card -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg slide-in-delay-1">
+          <h4 class="text-xl font-bold text-[#26A69A] mb-4 flex items-center gap-2">
+            <i class="fas fa-chart-pie"></i>
+            Nutritional Breakdown
+          </h4>
+          <canvas id="nutritionChart" class="max-h-64"></canvas>
+        </div>
+
+        <!-- Total Calories Card -->
+        <div class="bg-gradient-to-br from-[#FFA726] to-[#FF7043] text-white p-6 rounded-2xl shadow-lg slide-in-delay-2 flex flex-col justify-center items-center">
+          <i class="fas fa-fire text-5xl mb-4 opacity-80"></i>
+          <h4 class="text-lg font-semibold mb-2">Total Daily Calories</h4>
+          <p id="totalCalories" class="text-5xl font-bold">0</p>
+          <p class="text-sm opacity-90 mt-2">kcal</p>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <!-- <div class="bg-[#FFEB3B]/20 border-l-4 border-[#FFEB3B] p-6 rounded-lg slide-in-delay-3">
+        <div class="flex gap-4">
+          <i class="fas fa-info-circle text-[#FFA726] text-2xl flex-shrink-0"></i>
+          <div>
+            <h4 class="font-bold text-[#333333] mb-2">Important Note</h4>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              This plan is AI-generated based on general nutritional guidelines. While it considers your health conditions, 
+              please consult your dietitian or healthcare provider for personalized medical advice and dietary recommendations.
+            </p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Action Buttons -->
+      <div class="flex gap-4 justify-center mt-8 slide-in-delay-3">
+        <button 
+          onclick="window.print()" 
+          class="bg-[#26A69A] hover:bg-[#00897B] text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+        >
+          <i class="fas fa-download"></i>
+          Download as PDF
+        </button>
+        <button 
+          onclick="location.reload()" 
+          class="bg-white hover:bg-gray-50 text-[#26A69A] border-2 border-[#26A69A] px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+        >
+          <i class="fas fa-redo"></i>
+          Generate New Plan
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  {% include 'footer.html' %}
+
+  <script>
+    let nutritionChart = null;
+
+    document.getElementById("form1day").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const generateBtn = document.getElementById("generateBtn");
+      const loadingSection = document.getElementById("loadingSection");
+      const resultSection = document.getElementById("result1day");
+      
+      // Show loading state
+      generateBtn.disabled = true;
+      generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating...';
+      loadingSection.classList.remove("hidden");
+      resultSection.classList.add("hidden");
+
+      const formData = new FormData(e.target);
+      
+      try {
+        const response = await fetch("/plan/1day", { 
+          method: "POST", 
+          body: formData 
+        });
+        
+        if (!response.ok) throw new Error("Failed to generate plan");
+        
+        const data = await response.json();
+
+        // Populate meals
+        const mealsDiv = document.getElementById("meals");
+        mealsDiv.innerHTML = "";
+        
+        const mealIcons = {
+          'Breakfast': 'fa-mug-hot',
+          'Lunch': 'fa-bowl-rice',
+          'Dinner': 'fa-plate-wheat'
+        };
+
+        data.Explanations.forEach((exp, idx) => {
+          const meal = Object.keys(data.Meals)[idx];
+          const details = data.Meals[meal];
+          const icon = mealIcons[meal] || 'fa-utensils';
+          
+          mealsDiv.innerHTML += `
+            <div class="bg-white border-t-4 border-[#26A69A] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow slide-in-delay-${idx + 1}">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="bg-[#26A69A] text-white w-12 h-12 rounded-full flex items-center justify-center">
+                  <i class="fas ${icon} text-xl"></i>
+                </div>
+                <h4 class="text-xl font-bold text-[#333333]">${meal}</h4>
+              </div>
+              <p class="text-gray-700 mb-3 leading-relaxed">${details}</p>
+              <div class="bg-[#F9F9F9] p-3 rounded-lg border-l-4 border-[#FFA726]">
+                <p class="text-sm text-gray-600 italic"><i class="fas fa-lightbulb text-[#FFA726] mr-2"></i>${exp}</p>
+              </div>
+            </div>
+          `;
+        });
+
+        // Update total calories
+        document.getElementById("totalCalories").textContent = data["Total Calories"].toFixed(0);
+
+        // Create nutrition chart
+        createNutritionChart(data);
+
+        // Hide loading, show results
+        loadingSection.classList.add("hidden");
+        resultSection.classList.remove("hidden");
+        
+        // Smooth scroll to results
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+      } catch (err) {
+        alert("Error: " + err.message);
+        loadingSection.classList.add("hidden");
+      } finally {
+        generateBtn.disabled = false;
+        generateBtn.innerHTML = '<i class="fas fa-utensils"></i> Generate 1-Day Plan';
+      }
+    });
+
+    function createNutritionChart(data) {
+      const ctx = document.getElementById('nutritionChart').getContext('2d');
+      
+      // Destroy previous chart if exists
+      if (nutritionChart) {
+        nutritionChart.destroy();
+      }
+
+      // Extract nutrition data (mock data since API doesn't provide breakdown)
+      const totalCals = data["Total Calories"];
+      const carbs = (totalCals * 0.50 / 4).toFixed(0); // 50% from carbs, 4 cal/g
+      const protein = (totalCals * 0.20 / 4).toFixed(0); // 20% from protein, 4 cal/g
+      const fats = (totalCals * 0.30 / 9).toFixed(0); // 30% from fats, 9 cal/g
+
+      nutritionChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Carbs', 'Protein', 'Fats'],
+          datasets: [{
+            data: [carbs, protein, fats],
+            backgroundColor: ['#4CAF50', '#FFA726', '#FF7043'],
+            borderWidth: 2,
+            borderColor: '#fff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 15,
+                font: { size: 12 }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.parsed + 'g';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

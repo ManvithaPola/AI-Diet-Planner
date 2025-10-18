@@ -1,0 +1,54 @@
+Food Item,Category,Subcategory,Health Suitability,Calories,Carbs,Protein,Fats,Fiber,Vitamin A,Vitamin C,Iron,Calcium,Local Availability
+Oats,Breakfast,Grains,"Diabetes, Obesity, PCOD, Thyroid",389,66.0,16.0,7.0,11.0,0,0.0,4.0,54,Yes
+Lentils,Lunch,Protein,"Diabetes, Anemia, Thyroid",116,20.0,9.0,0.4,8.0,8,1.0,3.3,19,Yes
+Banana,Breakfast,Fruit,"Diabetes (in moderation), Anemia",89,23.0,1.0,0.3,2.6,64,8.7,0.3,5,Yes
+Paneer,Lunch,Dairy,"Kidney issues (moderate), PCOD, Obesity",265,1.2,18.0,20.0,0.0,9,0.0,0.7,208,Yes
+Brown Rice,Lunch,Grains,"Diabetes, Thyroid, Heart issues",123,26.0,2.6,1.0,1.8,0,0.0,0.4,3,Yes
+Almonds,Snack,Nuts,"Heart issues, Diabetes, PCOD, Obesity",579,22.0,21.0,50.0,12.0,1,0.0,3.7,269,Yes
+Carrot,Snack,Vegetable,"Diabetes, Thyroid, Obesity",41,10.0,0.9,0.2,2.8,835,6.0,0.3,33,Yes
+Apple,Snack,Fruit,"Diabetes, Thyroid, Obesity",52,14.0,0.3,0.2,2.4,54,4.6,0.1,6,Yes
+Chicken Breast,Dinner,Protein,"Thyroid, PCOD, Obesity, Heart issues",165,0.0,31.0,3.6,0.0,13,0.0,0.9,15,Yes
+Spinach,Dinner,Vegetable,"Anemia, Heart issues, PCOD, Diabetes",23,3.6,2.9,0.4,2.2,469,28.0,2.7,99,Yes
+Sweet Potato,Lunch,Vegetable,"Diabetes, PCOD, Thyroid",112,26.0,2.0,0.1,3.0,14187,2.4,0.6,30,Yes
+Chickpeas,Lunch,Protein,"Diabetes, Obesity, PCOD",164,27.0,9.0,2.6,7.6,6,4.8,2.9,49,Yes
+Yogurt,Breakfast,Dairy,"Obesity, Diabetes, PCOD, Calcium-deficient",59,3.6,10.0,0.4,0.0,38,0.0,0.1,110,Yes
+Broccoli,Dinner,Vegetable,"Heart issues, Thyroid, Diabetes",34,7.0,2.8,0.4,2.6,623,89.2,0.7,47,Yes
+Mushroom,Dinner,Vegetable,"Thyroid, PCOD, Diabetes",22,3.3,3.1,0.3,1.0,0,2.1,0.5,18,Yes
+Walnuts,Snack,Nuts,"Heart issues, Diabetes, Obesity",654,14.0,15.0,65.0,6.7,20,1.3,2.9,98,Yes
+Eggs,Breakfast,Protein,"Thyroid, PCOD, Heart issues",155,1.1,13.0,11.0,0.0,140,0.0,1.2,50,Yes
+Quinoa,Lunch,Grains,"Diabetes, Obesity, PCOD",368,64.0,14.0,6.0,7.0,0,0.0,4.6,47,Yes
+Flax Seeds,Snack,Nuts,"Heart issues, Diabetes, PCOD",534,29.0,18.0,42.0,27.0,31,0.6,5.7,255,Yes
+Tomato,Lunch,Vegetable,"Diabetes, Heart issues, Thyroid",18,3.9,0.9,0.2,1.2,833,13.7,0.5,18,Yes
+Cucumber,Snack,Vegetable,"Diabetes, Obesity, Thyroid",16,3.6,0.7,0.1,0.5,105,2.8,0.3,16,Yes
+Fish (Salmon),Dinner,Protein,"Heart issues, Thyroid, Obesity",208,0.0,20.0,13.0,0.0,50,0.0,0.8,12,Yes
+Pomegranate,Snack,Fruit,"Anemia, Heart issues, Obesity",83,19.0,1.7,1.2,4.0,0,10.2,0.3,10,Yes
+Mango,Snack,Fruit,"Diabetes (moderation), Obesity",60,15.0,0.8,0.4,1.6,54,36.4,0.2,11,Yes
+Cabbage,Lunch,Vegetable,"Diabetes, Thyroid, Obesity",25,5.8,1.3,0.1,2.5,81,36.6,0.5,40,Yes
+Cauliflower,Lunch,Vegetable,"Diabetes, Thyroid, Obesity",25,5.0,1.9,0.1,2.0,0,46.4,0.4,22,Yes
+Green Gram (Moong),Lunch,Protein,"Diabetes, Obesity, PCOD",347,63.0,24.0,1.2,16.0,0,4.8,6.7,70,Yes
+Brown Bread,Breakfast,Grains,"Diabetes, Obesity, PCOD",247,41.0,13.0,4.0,6.0,0,0.0,3.6,33,Yes
+Peanuts,Snack,Nuts,"Heart issues, Diabetes, Obesity",567,16.0,26.0,49.0,9.0,0,0.0,4.6,92,Yes
+Beetroot,Snack,Vegetable,"Anemia, Heart issues, PCOD",43,10.0,1.6,0.2,2.8,225,4.9,0.8,16,Yes
+Watermelon,Snack,Fruit,"Diabetes (moderation), Obesity",30,8.0,0.6,0.2,0.4,569,8.1,0.2,7,Yes
+Tofu,Lunch,Protein,"Diabetes, Heart issues, PCOD",144,2.0,15.0,8.0,1.9,0,0.0,2.7,253,Yes
+Cottage Cheese (Low-fat),Lunch,Dairy,"Diabetes, Obesity, PCOD",98,3.4,11.0,4.3,0.0,9,0.0,0.3,150,Yes
+Kidney Beans,Lunch,Protein,"Diabetes, PCOD, Obesity",127,22.0,8.7,0.5,6.4,7,2.1,2.9,35,Yes
+Turmeric,Spices,Herb,"Inflammation, Heart issues, Thyroid",312,67.0,10.0,3.3,21.0,0,0.0,4.4,183,Yes
+Ginger,Spices,Herb,"PCOD, Diabetes, Thyroid",80,18.0,1.8,0.8,2.0,0,5.0,0.6,16,Yes
+Garlic,Spices,Herb,"Heart issues, Diabetes, PCOD",149,33.0,6.4,0.5,2.1,0,31.2,1.7,181,Yes
+Turmeric Milk,Beverage,Dairy,"PCOD, Diabetes, Obesity",100,12.0,4.0,3.0,0.0,150,0.0,0.4,120,Yes
+Lassi,Beverage,Dairy,"Diabetes, Obesity, PCOD",95,12.0,3.0,2.0,0.0,90,0.0,0.5,130,Yes
+Green Tea,Beverage,Herbal,"Heart issues, Thyroid, Diabetes",1,0.0,0.0,0.0,0.0,0,0.0,0.0,0,Yes
+Coconut Water,Beverage,Herbal,"Diabetes (moderation), Kidney Stones",19,3.7,0.7,0.2,1.1,0,2.4,0.3,24,Yes
+Pumpkin,Dinner,Vegetable,"Diabetes, Heart issues, PCOD",26,6.5,1.0,0.1,0.5,4269,9.0,0.8,21,Yes
+Zucchini,Dinner,Vegetable,"Diabetes, Obesity, Thyroid",17,3.1,1.2,0.3,1.0,200,20.0,0.4,21,Yes
+Bell Pepper,Snack,Vegetable,"Diabetes, Heart issues, Thyroid",31,6.0,1.0,0.3,2.1,3131,80.4,0.4,10,Yes
+Methi (Fenugreek),Lunch,Vegetable,"Diabetes, Heart issues, PCOD",49,7.0,4.0,0.8,2.0,40,3.0,1.5,50,Yes
+Drumstick,Lunch,Vegetable,"Anemia, PCOD, Diabetes",64,9.0,6.0,0.2,3.2,756,70.0,1.1,30,Yes
+Ragi,Breakfast,Grains,"Diabetes, Obesity, PCOD",336,72.0,7.3,1.4,3.6,0,0.0,3.9,344,Yes
+Millets,Breakfast,Grains,"Diabetes, Obesity, PCOD",378,73.0,11.0,4.0,8.0,0,0.0,4.5,8,Yes
+Dates,Snack,Fruit,"Anemia, PCOD, Diabetes",282,75.0,2.5,0.4,8.0,0,0.0,1.0,64,Yes
+Black Grapes,Snack,Fruit,"Diabetes (moderation), Heart issues, Obesity",69,18.0,0.7,0.2,0.9,66,4.0,0.4,10,Yes
+Strawberries,Snack,Fruit,"Diabetes, Heart issues, Obesity",32,7.7,0.7,0.3,2.0,1,58.8,0.4,16,Yes
+Blueberries,Snack,Fruit,"Diabetes, Heart issues, Obesity",57,14.0,0.7,0.3,2.4,54,9.7,0.3,6,Yes
+Raspberries,Snack,Fruit,"Diabetes, Heart issues, Obesity",52,12.0,1.2,0.7,6.5,33,26.2,0.7,25,Yes

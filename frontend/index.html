@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DietGenie - AI-Powered Personalized Diet Plans</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Floating Animation for Icons */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(15px); }
+    }
+    
+    .float-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .float-icon-slow {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+    
+    .float-icon-reverse {
+      animation: floatReverse 3.5s ease-in-out infinite;
+    }
+    
+    /* Fade-in Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .fade-in-left {
+      animation: fadeInLeft 0.8s ease-out forwards;
+    }
+    
+    .fade-in-right {
+      animation: fadeInRight 0.8s ease-out forwards;
+    }
+    
+    /* Gradient Background */
+    .hero-gradient {
+      background: linear-gradient(135deg, #4CAF50 0%, #26A69A 100%);
+    }
+    
+    .teal-gradient {
+      background: linear-gradient(135deg, #26A69A 0%, #4DB6AC 100%);
+    }
+    
+    /* Counter Animation */
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .count-up {
+      animation: countUp 0.6s ease-out forwards;
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Accordion Arrow Rotation */
+    .accordion-arrow {
+      transition: transform 0.3s ease;
+    }
+    
+    .accordion-open .accordion-arrow {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+
+<body class="bg-[#F9F9F9] text-[#333333]">
+
+  <!-- Include Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- ============================================ -->
+  <!-- HERO SECTION -->
+  <!-- ============================================ -->
+  <section class="hero-gradient relative overflow-hidden py-24 md:py-32">
+    <!-- Floating Food Icons -->
+    <div class="absolute top-20 left-10 text-6xl opacity-60 float-icon pointer-events-none z-0">🥗</div>
+    <div class="absolute top-40 right-20 text-5xl opacity-60 float-icon-slow pointer-events-none z-0" style="animation-delay: 1s;">🥦</div>
+    <div class="absolute bottom-32 left-1/4 text-5xl opacity-60 float-icon pointer-events-none z-0" style="animation-delay: 2s;">🍎</div>
+    <div class="absolute top-1/3 right-1/3 text-4xl opacity-60 float-icon-slow pointer-events-none z-0" style="animation-delay: 3s;">🥕</div>
+    <div class="absolute bottom-20 right-10 text-6xl opacity-60 float-icon pointer-events-none z-0" style="animation-delay: 1.5s;">🍇</div>
+    <div class="absolute top-1/2 left-1/3 text-5xl opacity-60 float-icon-slow pointer-events-none z-0" style="animation-delay: 2.5s;">🍚</div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <!-- Hero Content -->
+      <div class="fade-in-up">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+          Personalized AI-Powered<br>Diet Plans
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+          Healthy, local, and tailored just for you. Get science-backed meal plans designed by AI to match your unique health goals.
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="/plan/1day" class="bg-[#FFA726] hover:bg-[#FF9800] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <i class="fas fa-calendar-day mr-2"></i>Generate 1-Day Plan
+          </a>
+          <a href="/plan/7day" class="bg-white text-[#4CAF50] hover:bg-gray-50 font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <i class="fas fa-calendar-week mr-2"></i>Generate 7-Day Plan
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hero Image Placeholder -->
+      <div class="mt-16 fade-in-up delay-3">
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-3xl mx-auto border-2 border-white/20">
+          <div class="flex items-center justify-center">
+            <i class="fas fa-brain text-9xl opacity-50"></i>
+            <span class="text-6xl mx-8">+</span>
+            <i class="fas fa-utensils text-9xl opacity-50"></i>
+          </div>
+          <p class="mt-6 text-lg opacity-90">AI-Powered Nutrition Intelligence</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- HOW IT WORKS SECTION -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6">
+    <div class="container mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16 fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#333333] mb-4">
+          How DietGenie Works
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Get your personalized diet plan in three simple steps
+        </p>
+      </div>
+      
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Step 1 -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 fade-in-left border-t-4 border-[#4CAF50]">
+          <div class="bg-[#4CAF50] w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-user-edit text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#333333] mb-4 text-center">
+            1. Input Your Details
+          </h3>
+          <p class="text-gray-600 text-center leading-relaxed">
+            Share your age, gender, health conditions, dietary preferences, and fitness goals. Our AI needs to understand you first.
+          </p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 fade-in-up border-t-4 border-[#26A69A]" style="animation-delay: 0.1s;">
+          <div class="bg-[#26A69A] w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-brain text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#333333] mb-4 text-center">
+            2. AI Analyzes Your Needs
+          </h3>
+          <p class="text-gray-600 text-center leading-relaxed">
+            Our advanced AI processes your information, considers nutritional science, and calculates optimal macros for your body.
+          </p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 fade-in-right border-t-4 border-[#FFA726]" style="animation-delay: 0.2s;">
+          <div class="bg-[#FFA726] w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-utensils text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-[#333333] mb-4 text-center">
+            3. Get Instant Diet Plans
+          </h3>
+          <p class="text-gray-600 text-center leading-relaxed">
+            Receive personalized meal plans with local ingredients, portion sizes, and detailed nutritional breakdowns instantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- STATS SECTION (FUTURE FEATURE) -->
+  <!-- ============================================ -->
+  <section class="teal-gradient py-20 px-6 relative overflow-hidden">
+    <!-- Floating Icons -->
+    <div class="absolute top-10 left-10 text-5xl opacity-10 float-icon">📊</div>
+    <div class="absolute bottom-10 right-10 text-5xl opacity-10 float-icon-reverse">💪</div>
+    
+    <div class="container mx-auto relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16 fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Track Your Progress
+        </h2>
+        <p class="text-lg text-white/90 max-w-2xl mx-auto">
+          Monitor your health journey with detailed analytics and insights
+        </p>
+      </div>
+      
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Stat 1 -->
+        <div class="bg-white/95 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+          <div class="text-[#4CAF50] text-5xl font-bold mb-2 count-up">2,500+</div>
+          <p class="text-gray-600 font-medium text-lg">Daily Calories Tracked</p>
+          <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-full bg-[#4CAF50] rounded-full" style="width: 75%; transition: width 1s ease;"></div>
+          </div>
+        </div>
+        
+        <!-- Stat 2 -->
+        <div class="bg-white/95 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300" style="animation-delay: 0.1s;">
+          <div class="text-[#26A69A] text-5xl font-bold mb-2 count-up">35g</div>
+          <p class="text-gray-600 font-medium text-lg">Protein Goal Achieved</p>
+          <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-full bg-[#26A69A] rounded-full" style="width: 85%; transition: width 1s ease;"></div>
+          </div>
+        </div>
+        
+        <!-- Stat 3 -->
+        <div class="bg-white/95 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300" style="animation-delay: 0.2s;">
+          <div class="text-[#FFA726] text-5xl font-bold mb-2 count-up">7</div>
+          <p class="text-gray-600 font-medium text-lg">Days Streak Maintained</p>
+          <div class="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-full bg-[#FFA726] rounded-full" style="width: 100%; transition: width 1s ease;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FAQ SECTION -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <!-- Section Header -->
+      <div class="text-center mb-16 fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#333333] mb-4">
+          Your Questions, Answered
+        </h2>
+        <p class="text-lg text-gray-600">
+          Everything you need to know about DietGenie
+        </p>
+      </div>
+      
+      <!-- FAQ Accordion -->
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="bg-[#F9F9F9] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <button class="accordion-btn w-full text-left p-6 focus:outline-none flex justify-between items-center" onclick="toggleAccordion(this)">
+            <h3 class="text-lg font-semibold text-[#333333] pr-4">
+              <i class="fas fa-heartbeat text-[#4CAF50] mr-3"></i>
+              What makes this diet plan suitable for my health condition?
+            </h3>
+            <i class="fas fa-chevron-down text-[#4CAF50] accordion-arrow"></i>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
+            <p class="px-6 pb-6 text-gray-600 leading-relaxed">
+              Our AI analyzes your specific health conditions (diabetes, hypertension, thyroid issues, etc.) and creates meal plans that align with medical nutritional guidelines. We consider food restrictions, nutrient requirements, and therapeutic dietary approaches recommended for your condition.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="bg-[#F9F9F9] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <button class="accordion-btn w-full text-left p-6 focus:outline-none flex justify-between items-center" onclick="toggleAccordion(this)">
+            <h3 class="text-lg font-semibold text-[#333333] pr-4">
+              <i class="fas fa-edit text-[#26A69A] mr-3"></i>
+              Can I customize my meals?
+            </h3>
+            <i class="fas fa-chevron-down text-[#26A69A] accordion-arrow"></i>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
+            <p class="px-6 pb-6 text-gray-600 leading-relaxed">
+              Absolutely! You can specify dietary preferences (vegetarian, vegan, gluten-free), food allergies, ingredients you love or dislike, and even cuisine preferences. Our chatbot feature allows real-time meal customization and ingredient swaps while maintaining nutritional balance.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="bg-[#F9F9F9] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <button class="accordion-btn w-full text-left p-6 focus:outline-none flex justify-between items-center" onclick="toggleAccordion(this)">
+            <h3 class="text-lg font-semibold text-[#333333] pr-4">
+              <i class="fas fa-calculator text-[#FFA726] mr-3"></i>
+              How do you calculate calories and macros?
+            </h3>
+            <i class="fas fa-chevron-down text-[#FFA726] accordion-arrow"></i>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
+            <p class="px-6 pb-6 text-gray-600 leading-relaxed">
+              We use scientifically validated formulas like the Mifflin-St Jeor equation to calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE). Macronutrient ratios are determined based on your goals, activity level, and health conditions, ensuring optimal protein, carbs, and fats for your needs.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="bg-[#F9F9F9] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <button class="accordion-btn w-full text-left p-6 focus:outline-none flex justify-between items-center" onclick="toggleAccordion(this)">
+            <h3 class="text-lg font-semibold text-[#333333] pr-4">
+              <i class="fas fa-globe-asia text-[#2E7D32] mr-3"></i>
+              Are the ingredients locally available in India?
+            </h3>
+            <i class="fas fa-chevron-down text-[#2E7D32] accordion-arrow"></i>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
+            <p class="px-6 pb-6 text-gray-600 leading-relaxed">
+              Yes! DietGenie prioritizes Indian ingredients and local cuisine. Our AI suggests meals using seasonal produce, regional staples like dal, roti, rice, and locally available vegetables and proteins. We understand Indian eating culture and incorporate familiar flavors into healthy meal plans.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ 5 -->
+        <div class="bg-[#F9F9F9] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <button class="accordion-btn w-full text-left p-6 focus:outline-none flex justify-between items-center" onclick="toggleAccordion(this)">
+            <h3 class="text-lg font-semibold text-[#333333] pr-4">
+              <i class="fas fa-redo text-[#FF7043] mr-3"></i>
+              Can I repeat the same plan next week?
+            </h3>
+            <i class="fas fa-chevron-down text-[#FF7043] accordion-arrow"></i>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
+            <p class="px-6 pb-6 text-gray-600 leading-relaxed">
+              You can, but we don't recommend it! DietGenie tracks your previous plans to provide variety and prevent meal fatigue. However, if you loved a particular week's menu, you can save it and use it again. Our AI ensures nutritional diversity to keep your diet interesting and comprehensive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- BLOG / RESOURCES SECTION -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6 bg-[#F9F9F9]">
+    <div class="container mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16 fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#333333] mb-4">
+          Health Tips & Recipes
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Expert advice and delicious recipes for your wellness journey
+        </p>
+      </div>
+      
+      <!-- Blog Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <!-- Blog Card 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+          <div class="bg-[#4CAF50] h-48 flex items-center justify-center">
+            <i class="fas fa-apple-alt text-white text-7xl opacity-50"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <i class="far fa-calendar"></i>
+              <span>Oct 15, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#333333] mb-3">
+              10 Superfoods for Better Immunity
+            </h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Discover natural foods that boost your immune system and protect against seasonal illnesses...
+            </p>
+            <a href="#" class="text-[#4CAF50] font-semibold hover:text-[#2E7D32] inline-flex items-center transition-colors">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 2 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+          <div class="bg-[#26A69A] h-48 flex items-center justify-center">
+            <i class="fas fa-dumbbell text-white text-7xl opacity-50"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <i class="far fa-calendar"></i>
+              <span>Oct 12, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#333333] mb-3">
+              Protein-Rich Vegetarian Meals
+            </h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Delicious plant-based recipes packed with protein to fuel your workouts and daily energy...
+            </p>
+            <a href="#" class="text-[#26A69A] font-semibold hover:text-[#00897B] inline-flex items-center transition-colors">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+          <div class="bg-[#FFA726] h-48 flex items-center justify-center">
+            <i class="fas fa-heartbeat text-white text-7xl opacity-50"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <i class="far fa-calendar"></i>
+              <span>Oct 10, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#333333] mb-3">
+              Managing Diabetes Through Diet
+            </h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Evidence-based nutritional strategies to control blood sugar levels and live a healthier life...
+            </p>
+            <a href="#" class="text-[#FFA726] font-semibold hover:text-[#FF9800] inline-flex items-center transition-colors">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Blog Card 4 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+          <div class="bg-[#2E7D32] h-48 flex items-center justify-center">
+            <i class="fas fa-leaf text-white text-7xl opacity-50"></i>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <i class="far fa-calendar"></i>
+              <span>Oct 8, 2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#333333] mb-3">
+              Sustainable Eating for the Planet
+            </h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              How to make eco-friendly food choices that benefit both your health and the environment...
+            </p>
+            <a href="#" class="text-[#2E7D32] font-semibold hover:text-[#1B5E20] inline-flex items-center transition-colors">
+              Read More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TESTIMONIALS SECTION -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6 bg-white">
+    <div class="container mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16 fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#333333] mb-4">
+          What Our Users Say
+        </h2>
+        <p class="text-lg text-gray-600">
+          Real stories from people achieving their health goals
+        </p>
+      </div>
+      
+      <!-- Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Testimonial 1 -->
+        <div class="bg-[#F9F9F9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 rounded-full bg-[#4CAF50] flex items-center justify-center text-white text-2xl font-bold">
+              P
+            </div>
+            <div class="ml-4">
+              <h4 class="font-bold text-[#333333]">Priya Sharma</h4>
+              <p class="text-sm text-gray-500">Mumbai, Maharashtra</p>
+            </div>
+          </div>
+          <div class="text-[#FFA726] mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "DietGenie helped me manage my PCOS through a personalized diet plan. I've lost 8 kg in 3 months and my energy levels are amazing!"
+          </p>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="bg-[#F9F9F9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 rounded-full bg-[#26A69A] flex items-center justify-center text-white text-2xl font-bold">
+              R
+            </div>
+            <div class="ml-4">
+              <h4 class="font-bold text-[#333333]">Rajesh Kumar</h4>
+              <p class="text-sm text-gray-500">Bangalore, Karnataka</p>
+            </div>
+          </div>
+          <div class="text-[#FFA726] mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "As a diabetic, I struggled with meal planning. This AI-powered app makes it so easy! My blood sugar is now under control thanks to DietGenie."
+          </p>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="bg-[#F9F9F9] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-16 h-16 rounded-full bg-[#FFA726] flex items-center justify-center text-white text-2xl font-bold">
+              A
+            </div>
+            <div class="ml-4">
+              <h4 class="font-bold text-[#333333]">Ananya Reddy</h4>
+              <p class="text-sm text-gray-500">Hyderabad, Telangana</p>
+            </div>
+          </div>
+          <div class="text-[#FFA726] mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 leading-relaxed italic">
+            "The variety in the 7-day plan is incredible! No boring repetitive meals. Everything uses ingredients I can easily find in my local market."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- NEWSLETTER SUBSCRIPTION SECTION -->
+  <!-- ============================================ -->
+  <section class="teal-gradient py-20 px-6 relative overflow-hidden">
+    <!-- Floating Food Icons -->
+    <div class="absolute top-10 left-20 text-6xl opacity-10 float-icon">🍎</div>
+    <div class="absolute top-20 right-20 text-5xl opacity-10 float-icon-slow">🥕</div>
+    <div class="absolute bottom-10 left-10 text-5xl opacity-10 float-icon-reverse">🥦</div>
+    <div class="absolute bottom-20 right-32 text-6xl opacity-10 float-icon">🥗</div>
+    
+    <div class="container mx-auto max-w-3xl relative z-10">
+      <div class="text-center fade-in-up">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          Get Weekly Diet Tips & Recipes
+        </h2>
+        <p class="text-xl text-white/90 mb-8">
+          Join thousands of health enthusiasts receiving expert nutrition advice directly in their inbox
+        </p>
+        
+        <!-- Newsletter Form -->
+        <form id="newsletterForm" class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+          <input 
+            type="email" 
+            id="emailInput"
+            placeholder="Enter your email address" 
+            required
+            class="flex-1 px-6 py-4 rounded-full text-gray-700 focus:outline-none focus:ring-4 focus:ring-white/50 transition-all duration-300"
+          >
+          <button 
+            type="submit"
+            class="bg-[#FFA726] hover:bg-[#FF9800] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap"
+          >
+            <i class="fas fa-paper-plane mr-2"></i>Subscribe Now
+          </button>
+        </form>
+        
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="hidden mt-6 bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white px-6 py-4 rounded-2xl inline-block">
+          <i class="fas fa-check-circle mr-2"></i>
+          Thank you for subscribing! Check your inbox for confirmation.
+        </div>
+        
+        <p class="text-white/80 text-sm mt-6">
+          <i class="fas fa-lock mr-2"></i>We respect your privacy. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CALL TO ACTION SECTION -->
+  <!-- ============================================ -->
+  <section class="py-20 px-6 bg-white">
+    <div class="container mx-auto max-w-5xl">
+      <div class="bg-gradient-to-r from-[#4CAF50] to-[#26A69A] rounded-3xl p-12 md:p-16 text-center shadow-2xl relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-10 left-10 text-8xl">🥗</div>
+          <div class="absolute bottom-10 right-10 text-8xl">🍎</div>
+          <div class="absolute top-1/2 left-1/4 text-6xl">🥦</div>
+          <div class="absolute top-1/3 right-1/4 text-6xl">🥕</div>
+        </div>
+        
+        <div class="relative z-10">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Transform Your Health?
+          </h2>
+          <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            Start your personalized nutrition journey today. Get AI-powered meal plans tailored to your unique health needs.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/plan/1day" class="bg-white text-[#4CAF50] hover:bg-gray-50 font-semibold px-10 py-5 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
+              <i class="fas fa-rocket mr-2"></i>Get Started Free
+            </a>
+            <a href="/chatbot" class="bg-[#FFA726] hover:bg-[#FF9800] text-white font-semibold px-10 py-5 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
+              <i class="fas fa-comments mr-2"></i>Chat with AI Dietitian
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Footer -->
+  {% include 'footer.html' %}
+
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT FOR INTERACTIVITY -->
+  <!-- ============================================ -->
+  <script>
+    // FAQ Accordion Toggle
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const parent = button.parentElement;
+      
+      // Close all other accordions
+      document.querySelectorAll('.accordion-content').forEach(item => {
+        if (item !== content) {
+          item.style.maxHeight = '0px';
+          item.parentElement.classList.remove('accordion-open');
+        }
+      });
+      
+      // Toggle current accordion
+      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        parent.classList.remove('accordion-open');
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        parent.classList.add('accordion-open');
+      }
+    }
+    
+    // Newsletter Form Submission
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('emailInput').value;
+      const successMessage = document.getElementById('successMessage');
+      
+      // Simple email validation
+      if (email && email.includes('@')) {
+        // Hide form, show success message
+        this.style.display = 'none';
+        successMessage.classList.remove('hidden');
+        successMessage.style.animation = 'fadeInUp 0.5s ease-out';
+        
+        // In a real app, you would send this to your backend
+        console.log('Newsletter subscription for:', email);
+      }
+    });
+    
+    // Scroll Animation Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+    
+    // Counter Animation for Stats
+    function animateCounter(element, target, duration = 2000) {
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target.toLocaleString() + (element.textContent.includes('+') ? '+' : '') + (element.textContent.includes('g') ? 'g' : '');
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current).toLocaleString() + (element.textContent.includes('+') ? '+' : '') + (element.textContent.includes('g') ? 'g' : '');
+        }
+      }, 16);
+    }
+    
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('.count-up');
+          counters.forEach(counter => {
+            const text = counter.textContent;
+            const number = parseInt(text.replace(/\D/g, ''));
+            animateCounter(counter, number, 1500);
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    const statsSection = document.querySelector('.teal-gradient');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+  </script>
+
+</body>
+</html>

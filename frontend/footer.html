@@ -1,0 +1,87 @@
+
+<style>
+    /* Footer-specific styles */
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        color: #FFA726;
+    }
+
+    footer * {
+        transition: all 0.3s ease;
+    }
+</style>
+
+<!-- ========== FOOTER START ========== -->
+<footer class="bg-white border-t border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <!-- Brand Section -->
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 bg-gradient-to-br from-[#FFA726] to-[#FF9800] rounded-full flex items-center justify-center">
+                        <i class="fas fa-leaf text-white text-lg"></i>
+                    </div>
+                    <span class="font-bold text-2xl text-[#333333]">Diet<span class="text-[#FFA726]">Genie</span></span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed">Your AI Health Partner<br>Personalized nutrition plans powered by artificial intelligence</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-span-1">
+                <h3 class="font-bold text-[#333333] mb-4 text-lg">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-gray-600 hover:text-[#FFA726] text-sm">Home</a></li>
+                    <li><a href="/plan/1day" class="text-gray-600 hover:text-[#FFA726] text-sm">1-Day Plan</a></li>
+                    <li><a href="/plan/7day" class="text-gray-600 hover:text-[#FFA726] text-sm">7-Day Plan</a></li>
+                    <li><a href="/chatbot" class="text-gray-600 hover:text-[#FFA726] text-sm">Chatbot</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div class="col-span-1">
+                <h3 class="font-bold text-[#333333] mb-4 text-lg">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="/about" class="text-gray-600 hover:text-[#FFA726] text-sm">About Us</a></li>
+                    <li><a href="/contact" class="text-gray-600 hover:text-[#FFA726] text-sm">Contact</a></li>
+                    <li><a href="/privacy" class="text-gray-600 hover:text-[#FFA726] text-sm">Privacy Policy</a></li>
+                    <li><a href="/terms" class="text-gray-600 hover:text-[#FFA726] text-sm">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Social & Newsletter -->
+            <div class="col-span-1">
+                <h3 class="font-bold text-[#333333] mb-4 text-lg">Connect With Us</h3>
+                <div class="flex space-x-4 mb-4">
+                    <a href="#" class="social-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-[#FFA726] hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-[#FFA726] hover:text-white">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-icon w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-[#FFA726] hover:text-white">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <p class="text-gray-600 text-xs">Follow us for health tips & updates</p>
+            </div>
+        </div>
+
+        <!-- Copyright Bar -->
+        <div class="border-t border-gray-200 mt-8 pt-8 text-center">
+            <p class="text-gray-600 text-sm">
+                &copy; <span id="current-year"></span> DietGenie. All rights reserved. | Made with <i class="fas fa-heart text-[#FFA726]"></i> for your health
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- ========== FOOTER END ========== -->
+
+<!-- Footer JavaScript -->
+<script>
+    // Set current year in footer
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+</script>

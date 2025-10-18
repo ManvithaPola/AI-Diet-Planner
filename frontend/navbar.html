@@ -1,0 +1,136 @@
+
+
+<style>
+    /* Navbar-specific styles */
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+    .mobile-menu.active {
+        max-height: 500px;
+    }
+
+    .navbar-scrolled {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-glow:hover {
+        box-shadow: 0 0 20px rgba(255, 167, 38, 0.6);
+        transform: translateY(-2px);
+    }
+
+    .nav-link {
+        position: relative;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background-color: #FFA726;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Smooth transitions */
+    nav * {
+        transition: all 0.3s ease;
+    }
+</style>
+
+<!-- ========== NAVBAR START ========== -->
+<nav id="navbar" class="bg-white sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-2 cursor-pointer group">
+                <div class="w-10 h-10 bg-gradient-to-br from-[#FFA726] to-[#FF9800] rounded-full flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fas fa-leaf text-white text-lg"></i>
+                </div>
+                <span class="font-bold text-2xl text-[#333333] tracking-tight">Diet<span class="text-[#FFA726]">Genie</span></span>
+            </div>
+
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">Home</a>
+                <a href="/about" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">About Us</a>
+                <a href="/plan/1day" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">1-Day Plan</a>
+                <a href="/plan/7day" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">7-Day Plan</a>
+                <a href="/chatbot" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">Chatbot</a>
+                <a href="/contact" class="nav-link text-[#333333] hover:text-[#FFA726] font-medium">Contact</a>
+            </div>
+
+            <!-- Get Started Button (Desktop) -->
+            <div class="hidden md:block">
+                <button class="btn-glow bg-[#FFA726] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#FF9800] transition-all duration-300">
+                    Get Started
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-[#333333] hover:text-[#FFA726] focus:outline-none">
+                    <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white">
+            <div class="px-2 pt-2 pb-4 space-y-3">
+                <a href="/" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">Home</a>
+                <a href="/1day-plan" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">1-Day Plan</a>
+                <a href="/7day-plan" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">7-Day Plan</a>
+                <a href="/chatbot" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">Chatbot</a>
+                <a href="/about" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">About</a>
+                <a href="/contact" class="block px-4 py-2 text-[#333333] hover:bg-[#FFA726] hover:text-white rounded-lg font-medium">Contact</a>
+                <button class="w-full bg-[#FFA726] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#FF9800] mt-2">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ========== NAVBAR END ========== -->
+
+<!-- Navbar JavaScript -->
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileMenu && menuIcon) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            
+            // Toggle icon between bars and times
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    }
+
+    // Navbar scroll effect - adds shadow when scrolling
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    }
+</script>
