@@ -1,10 +1,13 @@
-venv/
-__pycache__/
+@"
+# secrets
 .env
-'/.env
-.env
-backend/.env
 *.env
+
+# venv & caches
+venv/
+**/__pycache__/
+
+# generated plans
 data/previous_1day_plans.json
 data/previous_7day_plans.json
-' | Out-File -FilePath .gitignore -Encoding utf8 -Append
+"@ | Out-File -FilePath .gitignore -Encoding utf8 -Append
