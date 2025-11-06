@@ -124,10 +124,10 @@ http://localhost:5000
 
 | Page | Preview |
 |------|---------|
-| **Home Page** | *(home.png)* |
-| **1-Day Plan Page** | *(1day.pny)* |
-| **7-Day Plan Page** | *(7day.png)* |
-| **Diet Chatbot Page** | *(chatbot.png)* |
+| **Home Page** | ![home](home.png) |
+| **1-Day Plan Page** | ![1day](1day.pny) |
+| **7-Day Plan Page** | ![7day](7day.png) |
+| **Diet Chatbot Page** | ![chat](chatbot.png) |
 
 ---
 

@@ -1,0 +1,3 @@
+﻿# Redact OpenAI-style keys anywhere in blobs
+regex:sk-[A-Za-z0-9_-]{16,}==>REDACTED
+regex:sk-proj-[A-Za-z0-9_-]{16,}==>REDACTED
