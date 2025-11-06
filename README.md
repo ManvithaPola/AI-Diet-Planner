@@ -91,6 +91,14 @@ DietGenie is an AI-powered diet planning system that generates personalized meal
 
 ---
 
+## 🌍 Live Demo
+
+You can access the deployed project using the link below:
+
+🔗 **Live Website:** https://ai-diet-planner-2.onrender.com/
+
+---
+
 ## 🎯 How to Run Locally
 
 ```bash
