@@ -1,3 +1,10 @@
 venv/
 __pycache__/
 .env
+'/.env
+.env
+backend/.env
+*.env
+data/previous_1day_plans.json
+data/previous_7day_plans.json
+' | Out-File -FilePath .gitignore -Encoding utf8 -Append
